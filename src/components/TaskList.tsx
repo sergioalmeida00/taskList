@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
 import '../styles/tasklist.scss'
-
 import { FiTrash, FiCheckSquare } from 'react-icons/fi'
+
 
 interface Task {
   id: number;
@@ -24,7 +24,7 @@ export function TaskList() {
     }
 
     setTasks(old => [...old,handleTask]);
-    setNewTaskTitle('')
+    setNewTaskTitle('');
 
     
   }
@@ -59,7 +59,9 @@ export function TaskList() {
             onChange={(e) => setNewTaskTitle(e.target.value)}
             value={newTaskTitle}
           />
-          <button type="submit" data-testid="add-task-button" onClick={handleCreateNewTask}>
+          <button type="submit" data-testid="add-task-button"
+           className={(newTaskTitle.trim() == '') ? 'noneButton' : ''} 
+           onClick={handleCreateNewTask}>
             <FiCheckSquare size={16} color="#fff"/>
           </button>
         </div>
@@ -86,6 +88,7 @@ export function TaskList() {
                 <FiTrash size={16}/>
               </button>
             </li>
+    
           ))}
           
         </ul>
